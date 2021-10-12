@@ -18,6 +18,22 @@ function NavBar() {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs>
                 <Tab
+                    label = "Quiz App"
+                    component = {Link}
+                    to = "/"
+                    >
+                Quiz App
+                </Tab>
+
+                <Tab
+                    label = "Generate"
+                    component = {Link}
+                    to = "/generate"
+                >
+                    Generate Quiz
+                </Tab>
+
+                <Tab
                     label = "Register"
                     component = {Link}
                     to = "/register"
@@ -33,13 +49,6 @@ function NavBar() {
                     Log In
                 </Tab>
 
-                <Tab
-                    label = "Generate"
-                    component = {Link}
-                    to = "/generate"
-                >
-                    Generate Quiz
-                </Tab>
             </Tabs>
         </Box>
 

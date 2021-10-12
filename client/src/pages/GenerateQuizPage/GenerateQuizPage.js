@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-import BuildQuiz from "../../components/BuildQuiz";
+import BuildQuiz from "../../components/Generate/BuildQuiz";
 
 class GenerateQuizPage extends Component {
 
