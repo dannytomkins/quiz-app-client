@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { registerUser } from '../actions/user';
+import { registerUser } from '../../actions/user';
 
 const Register = () => {
 

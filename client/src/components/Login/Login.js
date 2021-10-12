@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom';
-import { loginUser } from '../actions/user'
+import { loginUser } from '../../actions/user';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
