@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom';
+import { loginUser } from '../actions/user'
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -22,7 +24,13 @@ const Login = () => {
     const onSubmit = async e => {
         e.preventDefault();
         // Call login action here
-        // login(username, password)
+        loginUser( username, password )
+        .then(function (res) {
+            Cookies.set("firstName", res.data.first_name);
+            Cookies.set("lastName", res.data.last_name);
+            Cookies.set("id", res.data.id)
+        })
+        .catch(err => console.log(err))
         console.log('Login Success!', formData)
     }
     return (
