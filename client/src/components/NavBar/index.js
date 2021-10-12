@@ -26,6 +26,14 @@ function NavBar() {
                 </Tab>
 
                 <Tab
+                    label = "Profile"
+                    component = {Link}
+                    to = "/profile"
+                >
+                    Profile
+                </Tab>
+
+                <Tab
                     label = "Generate"
                     component = {Link}
                     to = "/generate"

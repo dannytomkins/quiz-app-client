@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import API from "../utils/API";
-// import QuizFeed from "../components/QuizFeed/QuizFeed";
+import QuizFeed from "../../components/Feed/QuizFeed";
 import WelcomeBanner from "../../components/WelcomeBanner/WelcomeBanner";
 
 class DashboardPage extends Component {
@@ -23,7 +23,7 @@ class DashboardPage extends Component {
         return(
             <div>
                 <WelcomeBanner />
-                {/* <QuizFeed quizzes = {this.state.savedQuizzes} /> */}
+                <QuizFeed quizzes = {this.state.savedQuizzes} />
             </div>
         )
     }
