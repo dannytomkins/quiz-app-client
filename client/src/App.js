@@ -6,8 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import GenerateQuizPage from './pages/GenerateQuizPage/GenerateQuizPage';
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-
-
+import QuizPage from "./pages/QuizPage/QuizPage";
 
 import './App.css';
 
@@ -22,6 +21,7 @@ function App() {
           <Route exact path='/login' component={LoginPage} />
           <Route exact path='/generate' component = {GenerateQuizPage} />
           <Route exact path="/profile" component = {ProfilePage} />
+          <Route path="/quiz" component = {QuizPage} />
         </Switch>
       </Router>
     </div>
