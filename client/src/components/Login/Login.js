@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom';
-import { loginUser } from '../../actions/user';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import user from "../../actions/user";
 
 const Login = () => {
 
-    const notify = () => toast("Testoast");
+    const notify = () => toast("Logged in!");
 
     // create state with default values
     const [formData, setFormData] = useState({
@@ -25,20 +25,21 @@ const Login = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
 
     // onSubmit function to pass formData to axios function
-    // const onSubmit = async e => {
-    //     e.preventDefault();
-    //     // Call login action here
-    //     loginUser( username, password )
-    //     .then(function (res) {
-    //         Cookies.set("firstName", res.data.first_name);
-    //         Cookies.set("lastName", res.data.last_name);
-    //         Cookies.set("id", res.data.id)
-    //     })
-    //     .catch(err => console.log(err))
-    //     console.log('Login Success!', formData)
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        // Call login action here
+        user.loginUser( username, password )
+        .then(function (res) {
+            Cookies.set("firstName", res.data.first_name);
+            Cookies.set("lastName", res.data.last_name);
+            Cookies.set("id", res.data.id);
+        })
+        .catch(err => console.log(err))
+        console.log('Login Success!', formData)
+        window.location.href = "http://www.localhost:3000/";
 
         
-    // }
+    }
     return (
         <div>
             <ToastContainer />
@@ -46,7 +47,7 @@ const Login = () => {
                 Sign In
             </h1>
             <form className='form' 
-            // onSubmit={(e) => onSubmit(e)}
+            onSubmit={(e) => onSubmit(e)}
             >
                 <TextField 
                     className = 'form-group'
@@ -87,4 +88,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;
