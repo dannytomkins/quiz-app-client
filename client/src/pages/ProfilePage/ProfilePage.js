@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import ProfileBanner from "../../components/Profile/ProfileBanner";
 import QuizFeed from "../../components/Feed/QuizFeed";
 import Cookies from "js-cookie"
+import QuizScores from "../../components/Profile/QuizScores";
 
 class ProfilePage extends Component {
 
@@ -32,6 +33,7 @@ render() {
             <div>
                 <ProfileBanner />
                 {/* <Feed visits = {this.state.savedVisits}/> */}
+                <QuizScores />
             </div>
         )
     }
