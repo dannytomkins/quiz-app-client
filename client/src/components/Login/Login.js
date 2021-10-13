@@ -29,14 +29,14 @@ const Login = () => {
         e.preventDefault();
         // Call login action here
         user.loginUser({ username, password })
-        .then( function(res) {
+        .then(function(res) {
             console.log("response:", res)
-            Cookies.set("firstName", res.data.first_name);
-            Cookies.set("lastName", res.data.last_name);
+            Cookies.set("firstName", res.data.firstName);
+            Cookies.set("lastName", res.data.lastName);
             Cookies.set("id", res.data.id);
         })
         .catch(err => console.log(err))
-        console.log('Login Success!', formData)
+        // console.log('Login Success!', formData)
         // window.location.href = "http://www.localhost:3000/";
 
         
