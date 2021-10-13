@@ -8,4 +8,11 @@ export default {
         return axios.get(host + "/quiz/" + quizId);
     },
 
+    postQuiz : function (quiz) {
+        return axios.post(host + "/quiz", quiz);
+    },
+
+    postQuestions : function (questions) {
+        return axios.post(host + "/question", questions);
+    }
 }

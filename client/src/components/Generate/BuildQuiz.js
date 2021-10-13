@@ -11,6 +11,8 @@ import MenuItem from "@mui/material/MenuItem"
 import FormControl from "@mui/material/FormControl"
 import InputLabel from "@mui/material/InputLabel"
 import Box from "@mui/material/Box"
+import quiz from "../../actions/quiz";
+import Cookies from "js-cookie";
 
 
 
@@ -20,9 +22,11 @@ function BuildQuiz() {
         { question: '', correctAnswer: '', wrongAnswerOne: '', wrongAnswerTwo: '', wrongAnswerThree: '' }
     ])
 
-    const [difficulty, setDifficulty] = useState('', []);
+    const userId = Cookies.get('id');
 
-    const [title, setTitle] = useState('', []);
+    const [level, setLevel] = useState('', []);
+
+    const [quizName, setQuizName] = useState('', []);
 
     const [category, setCategory] = useState('', [])
 
@@ -32,12 +36,12 @@ function BuildQuiz() {
         setInputField(values);
     }
 
-    const handleTitleChange = (event) => {
-        setTitle(event.target.value);
+    const handleQuizNameChange = (event) => {
+        setQuizName(event.target.value);
     }
 
-    const handleDifficultyChange = (event) => {
-        setDifficulty(event.target.value);
+    const handleLevelChange = (event) => {
+        setLevel(event.target.value);
     }
 
     const handleCategoryChange = (event) => {
@@ -46,11 +50,17 @@ function BuildQuiz() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        quiz.postQuiz({level, category, quizName, userId})
+        .then(
+            quiz.postQuestions(inputField)
+            .then(
+                console.log("Hunky Dory")
+            )
+        )
         // add Axios calls
         console.log("Input Field", inputField);
-        console.log("Difficulty " + difficulty);
-        console.log("QuizName: " + title);
+        console.log("Difficulty " + level);
+        console.log("QuizName: " + quizName);
         console.log("Category: " + category);
     }
 
@@ -74,9 +84,9 @@ function BuildQuiz() {
                     <Box sx={{ minWidth: 120 }}>
                         <TextField 
                                 sx = {{ mb:1,  width: '100%'}}
-                                name="title"
-                                label="Quiz Name"
-                                onChange={event => handleTitleChange(event)}
+                                name="quizName"
+                                label="quizName"
+                                onChange={event => handleQuizNameChange(event)}
                                 />
 
                                 <FormControl fullWidth> 
@@ -84,10 +94,10 @@ function BuildQuiz() {
                                     <Select
                                     labelId = "difficulty"
                                     sx = {{ mb:1,  width: '100%'}}
-                                    name = "difficulty"
-                                    value = {difficulty}
+                                    name = "level"
+                                    value = {level}
                                     label = "Difficulty"
-                                    onChange={event => handleDifficultyChange(event)}
+                                    onChange={event => handleLevelChange(event)}
                                     >
                                     <MenuItem value = 'easy' label = "difficulty">
                                         <em>None</em>
