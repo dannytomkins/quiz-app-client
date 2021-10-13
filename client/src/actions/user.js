@@ -1,4 +1,6 @@
 import axios from 'axios'
+import Cookies from 'js-cookie'
+
 
 const host = "http://localhost:2121"
 
@@ -9,5 +11,8 @@ export default {
 
     loginUser : function(user) {
         return axios.post(host + "/login", user)
-    }
+
+    },
+    
+
 }
