@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { registerUser } from '../../actions/user';
+import axios from 'axios';
+import user from "../../actions/user";
 
 const Register = () => {
 
@@ -30,8 +32,11 @@ const Register = () => {
             console.log('Passwords do not match')
         } else {
             // Call Register action here
-            registerUser({ username, firstName, lastName, password })
-            console.log('Register Success!', formData)
+            user.registerUser({ username, firstName, lastName, password })
+            console.log('Register Success!', formData);
+            await axios.post('http://localhost:2121/user')
+            
+            
         }
     }
     return (

@@ -1,26 +1,13 @@
 import axios from 'axios'
 
-// Login User
-export const loginUser =
-    (username, password) =>
-    async => {
-        const config = {
-            headers: { 'Content-Type': 'application/json', }
-        }
-        const body = JSON.stringify({ username, password });
+const host = "http://localhost:2121"
 
-        // Do we need to hit login at the back end?
-        axios.post('/api/login', body, config)
+export default {
+    registerUser : function(user) {
+    return axios.post(host + '/user', user);
+    },
+
+    loginUser : function(user) {
+        return axios.post(host + "/login")
     }
-
-// Register User
-export const registerUser = 
-    ({ username, firstName, lastName, password }) =>
-    async => {
-        const config = {
-            headers: { 'Content-Type': 'application/json', }
-        }
-        const body = JSON.stringify({ username, firstName, lastName, password })
-
-        axios.post('/api/user', body, config)
-    }
+}

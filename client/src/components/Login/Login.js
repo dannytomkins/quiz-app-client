@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import { loginUser } from '../../actions/user';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+
+    const notify = () => toast("Testoast");
 
     // create state with default values
     const [formData, setFormData] = useState({
@@ -21,24 +25,29 @@ const Login = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
 
     // onSubmit function to pass formData to axios function
-    const onSubmit = async e => {
-        e.preventDefault();
-        // Call login action here
-        loginUser( username, password )
-        .then(function (res) {
-            Cookies.set("firstName", res.data.first_name);
-            Cookies.set("lastName", res.data.last_name);
-            Cookies.set("id", res.data.id)
-        })
-        .catch(err => console.log(err))
-        console.log('Login Success!', formData)
-    }
+    // const onSubmit = async e => {
+    //     e.preventDefault();
+    //     // Call login action here
+    //     loginUser( username, password )
+    //     .then(function (res) {
+    //         Cookies.set("firstName", res.data.first_name);
+    //         Cookies.set("lastName", res.data.last_name);
+    //         Cookies.set("id", res.data.id)
+    //     })
+    //     .catch(err => console.log(err))
+    //     console.log('Login Success!', formData)
+
+        
+    // }
     return (
         <div>
+            <ToastContainer />
             <h1>
                 Sign In
             </h1>
-            <form className='form' onSubmit={(e) => onSubmit(e)}>
+            <form className='form' 
+            // onSubmit={(e) => onSubmit(e)}
+            >
                 <TextField 
                     className = 'form-group'
                     label='Username'
@@ -62,12 +71,14 @@ const Login = () => {
                     />
 
                 <Button 
+                    onClick={notify}
                     sx = {{ m:1, width: '50%'}}
                     type='submit' 
                     className='btn btn-primary' 
                     value='Login'>
                     Login
                 </Button>
+
             </form>
             <p>
                 Don't have an account? <Link to='/register'>Sign Up</Link>

@@ -24,7 +24,7 @@ const QuizFeed = props => {
 
     ) : ( 
         <div>
-            {props.quizzes.map(quiz => {
+            {/* {props.quizzes.map(quiz => { */}
             <Card variant = "outlined" sx={{ width: '80%', mx: 'auto', mb: '10px'}}>
                 <CardContent>
                     <Typography variant = "h3" color = "text.primary" gutterBottom>
@@ -39,8 +39,8 @@ const QuizFeed = props => {
                     </Typography>
                 </CardContent>
             </Card>
-            })
-        }
+            {/* }) */}
+        {/* } */}
         </div>
    
 

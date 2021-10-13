@@ -23,7 +23,7 @@ class DashboardPage extends Component {
         return(
             <div>
                 <WelcomeBanner />
-                <QuizFeed quizzes = {this.state.savedQuizzes} />
+                <QuizFeed quizzes = {{length:1}} />
             </div>
         )
     }
