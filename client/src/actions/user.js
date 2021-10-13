@@ -8,6 +8,6 @@ export default {
     },
 
     loginUser : function(user) {
-        return axios.post(host + "/login")
+        return axios.post(host + "/login", user)
     }
 }
