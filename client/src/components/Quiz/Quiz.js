@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { getQuizById } from "../../actions/quiz";
 import { useParams } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 const Quiz = () => {
     // console.log(props);
@@ -46,16 +47,27 @@ const Quiz = () => {
 	// 		],
 	// 	},
 	// ];
-	const quizId = useParams()
+	const quizId = useParams();
 	// const {id} = quizId
-	console.log("param:", quizId)
+	console.log("param:", quizId);
 
 
-	const [quiz, setQuiz] = useState([])
+	const [quiz, setQuiz] = useState(
+		{
+			"id" : "",
+			"quizName" : "",
+			"category:" : "",
+			"level" : "",
+			"userId" : "",
+			"question" : []
+		}
+		);
 
 	useEffect(() => {
-		getQuizById(quizId.id).then(quiz => {setQuiz(quiz)})
+		
+		getQuizById(quizId.id).then(quiz => {setQuiz(quiz.data)})
 		console.log("useEffect Engaged!");
+		console.log(quiz);
 	  }, []);
 
 	  console.log("Quiz: ", quiz)
@@ -78,13 +90,32 @@ const Quiz = () => {
     // };
 
     return (
-		<div className='app'>
-			{quiz.data.question.map(question => {
+		
+		<div>
+		{quiz.question.length > 0 ? (
+		 	quiz.question.map((question) => (
+		 	  <Card variant='outlined'>
+		 		<CardContent>
+		 		  <Typography variant='h5' component='div'>
+		 			{question.id}
+		 		  </Typography>
+		 		  <Typography variant='h3'>
+		 			{question.id}
+		 			{'%'}
+		 		  </Typography>
+		 		</CardContent>
+		 	  </Card>
+		 	))
+		   ) : (
+		 	<p>No scores found</p>
+		   )}
+
+			{/* {quiz.data.question.map(question => {
 				return (
 					<p>{question.correctAnswer}</p>
 				)
 			})}
-			{/* {showScore ? (
+			{showScore ? (
 				<Card>
                     <CardContent>
                         You scored {score} out of {questions.length}
@@ -113,6 +144,9 @@ const Quiz = () => {
 			)} */}
 		</div>
 	);
+
+
+
 
     // return (
     //     <div>

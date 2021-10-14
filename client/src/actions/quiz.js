@@ -4,8 +4,8 @@ const host = "http://localhost:2121";
 
 export default {
 
-    getIndividualQuiz : function (quizId) {
-        return axios.get(host + "/quiz/" + quizId);
+    getQuizzes : function() {
+        return axios.get(host + "/quiz");
     },
 
     postQuiz : function (quiz) {
