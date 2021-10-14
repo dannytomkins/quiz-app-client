@@ -16,3 +16,7 @@ export default {
         return axios.post(host + "/question", questions);
     }
 }
+
+export const getQuizById = (quizId) => {
+    return axios.get(host + "/quiz/" + quizId);
+}
