@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { postScore } from "../../actions/score"
 import Cookies from "js-cookie";
+import "./quizCss.css";
+import { Table } from "@mui/material";
 
 const Quiz = () => {
 
@@ -108,7 +110,6 @@ const Quiz = () => {
 		);
 
 		
-
 	useEffect(() => {
 		
 		getQuizById(quizId.id).then(quiz => {setQuiz(quiz.data)})
@@ -140,13 +141,14 @@ const Quiz = () => {
         }
     };
 
+	const randomNum = Math.floor(Math.random() * (5 + 1))
+
     return (
 		<div>
 			{showScore ? (
 			<Card>
 				<CardContent>
 					<Typography variant="h4">You scored {score} out of {quiz.question.length}</Typography>
-
 				</CardContent>
 			</Card>
 		) : (
@@ -159,57 +161,56 @@ const Quiz = () => {
 							</Typography>
 						</CardContent>
 					</Card>
-					<Card>
+					<Card >
 						<CardContent>
 							<Typography variant = "h2">
 								{quiz.question[currentQuestion].question}
-							</Typography>
-
+							</Typography >
 						</CardContent>
 					</Card>
 					</div>
-				<div>
+				<Table  className = "container">
 				<Card>
 					<CardContent>	
-						<Button variant = "overline"  sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('correctAnswer')}>
+						<Button className = {`gallerycard${randomNum}`} variant = "underline"  sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('correctAnswer')}>
 							<Typography variant = "h6">
 								{quiz.question[currentQuestion].correctAnswer}
 							</Typography>
 						</Button>
 					</CardContent>
 				</Card>
-				<br/>
-				<Card>
+				
+				<Card  className = {`gallerycard${randomNum + 1}`}>
 					<CardContent>
-						<Button variant = "overline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
+						<Button variant = "underline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
 							<Typography variant = "h6">	
 								{quiz.question[currentQuestion].wrongAnswerOne}
 							</Typography>
 						</Button>
 					</CardContent>
 				</Card>
-					<br />
-					<Card>
-						<CardContent>
-							<Button variant = "overline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
-								<Typography variant = "h6">
-									{quiz.question[currentQuestion].wrongAnswerTwo}
-								</Typography>	
+				
+				<Card  className = {`gallerycard${randomNum + 2}`}>
+					<CardContent>
+						<Button variant = "underline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
+							<Typography variant = "h6">
+								{quiz.question[currentQuestion].wrongAnswerTwo}
+							</Typography>	
 						</Button>
 					</CardContent>
 				</Card>
-					<br/>
-					<Card>
-						<CardContent>
-							<Button variant = "overline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
-								<Typography variant = "h6">
-									{quiz.question[currentQuestion].wrongAnswerThree}
-								</Typography>
-							</Button>
-						</CardContent>
-					</Card>
-					<br />
-				</div>
+				
+				<Card className = {`gallerycard${randomNum + 3}`}>
+					<CardContent>
+						<Button variant = "" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
+							<Typography variant = "h6">
+								{quiz.question[currentQuestion].wrongAnswerThree}
+							</Typography>
+						</Button>
+					</CardContent>
+				</Card>
+				
+				</Table>
 			</>
 		)}
 		</div>	 	

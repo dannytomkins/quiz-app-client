@@ -51,7 +51,7 @@ function BuildQuiz() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (level, category, quizName, userId) {
+        if (level && category && quizName && userId) {
             quiz.postQuiz({level, category, quizName, userId})
             .then(
                 quiz.postQuestions(inputField)

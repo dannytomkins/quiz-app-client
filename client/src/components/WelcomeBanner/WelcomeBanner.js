@@ -1,15 +1,15 @@
 import Cookies from "js-cookie";
 import React from "react";
+import { Typography } from "@mui/material";
 
 function WelcomeBanner() {
 
     return (
         <div>
-            <h1>
-                <img width = "100%" src="https://image.freepik.com/free-vector/quiz-neon-sign_1262-19629.jpg" alt="quizBanner" />
-            </h1>
+            <Typography variant = "h2" sx = {{ mb:5, mt: 5}}>
+                Welcome to the Quiz App
+            </Typography>
         </div>
-
     )
 }
 
