@@ -54,7 +54,7 @@ function BuildQuiz() {
         .then(
             quiz.postQuestions(inputField)
             .then(
-                console.log("Hunky Dory")
+                window.location.href = "http://www.localhost:3000/"
             )
         )
         // add Axios calls

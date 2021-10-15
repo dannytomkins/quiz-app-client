@@ -33,12 +33,7 @@ const Register = () => {
             // Call Register action here
             user.registerUser({ username, firstName, lastName, password })
             console.log('Register Success!', formData);
-
-
-            // Is this a redundant call?
-            await axios.post('http://localhost:2121/user')
-            
-            
+            window.location.href = "http://www.localhost:3000/login";
         }
     }
     return (

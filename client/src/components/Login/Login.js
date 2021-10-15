@@ -37,7 +37,7 @@ const Login = () => {
         })
         .catch(err => console.log(err))
         // console.log('Login Success!', formData)
-        // window.location.href = "http://www.localhost:3000/";
+        window.location.href = "http://www.localhost:3000/";
 
         
     }

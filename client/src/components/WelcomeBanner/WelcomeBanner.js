@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React from "react";
 
 function WelcomeBanner() {
@@ -5,7 +6,7 @@ function WelcomeBanner() {
     return (
         <div>
             <h1>
-                Welcome, User!
+                <img src="https://image.freepik.com/free-vector/quiz-neon-sign_1262-19629.jpg" alt="quizBanner" />
             </h1>
         </div>
 

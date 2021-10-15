@@ -7,11 +7,13 @@ import Box from "@mui/material/Box"
 
 function NavBar() {
 
-    //   function deleteAll() {
-    //     Cookies.remove("id");
-    //     Cookies.remove("name");
-    //     Cookies.remove("last_name");
-    //   }
+      function deleteAll() {
+        Cookies.remove("id");
+        Cookies.remove("firstName");
+        Cookies.remove("lastName");
+        window.location.reload();
+        return false;
+      }
 
     return (
         <div>
@@ -41,21 +43,30 @@ function NavBar() {
                     Generate Quiz
                 </Tab>
 
-                <Tab
+                {!Cookies.get("id") && <Tab
                     label = "Register"
                     component = {Link}
                     to = "/register"
                     >
                 Sign-Up
-                </Tab>
+                </Tab>}
 
-                <Tab
+                {!Cookies.get("id") && <Tab
                     label = "Log In"
                     component = {Link}
                     to = "/login"
                 >
                     Log In
-                </Tab>
+                </Tab>}
+                
+                {Cookies.get("id") && <Tab
+                label = "Log Out"
+                component = {Link}
+                to = "/"
+                onClick = {() => deleteAll()}
+                >
+                </Tab>}
+
 
             </Tabs>
         </Box>
@@ -91,10 +102,6 @@ function NavBar() {
             //   >
             //     Login
             //   </NavLink>}
-            //   {Cookies.get("id") && <NavLink to = "/buildQuiz" className = "nav-link"
-            // //    onClick = {() => deleteAll()}
-            //    >
-            //        Logout</NavLink>} 
 
 }
   
