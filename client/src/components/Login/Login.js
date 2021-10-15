@@ -9,7 +9,7 @@ import user from "../../actions/user";
 
 const Login = () => {
 
-    const notify = () => toast("Logged in!");
+    const notify = () => toast.error("This username / password is not registered with the database, please try again.");
 
     // create state with default values
     const [formData, setFormData] = useState({
@@ -30,20 +30,25 @@ const Login = () => {
         // Call login action here
         user.loginUser({ username, password })
         .then(function(res) {
-            console.log("response:", res)
-            Cookies.set("firstName", res.data.firstName);
-            Cookies.set("lastName", res.data.lastName);
-            Cookies.set("id", res.data.id);
+            if (res.data.id != undefined) {
+                console.log("response:", res)
+                Cookies.set("firstName", res.data.firstName);
+                Cookies.set("lastName", res.data.lastName);
+                Cookies.set("id", res.data.id);
+                window.location.href = "http://www.localhost:3000/";
+            } else {
+
+            }
         })
         .catch(err => console.log(err))
         // console.log('Login Success!', formData)
-        window.location.href = "http://www.localhost:3000/";
+
 
         
     }
     return (
         <div>
-            <ToastContainer />
+            <ToastContainer position="top-center"/>
             <h1>
                 Sign In
             </h1>

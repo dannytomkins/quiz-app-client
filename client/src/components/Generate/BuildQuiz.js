@@ -13,6 +13,7 @@ import InputLabel from "@mui/material/InputLabel"
 import Box from "@mui/material/Box"
 import quiz from "../../actions/quiz";
 import Cookies from "js-cookie";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -50,18 +51,18 @@ function BuildQuiz() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        quiz.postQuiz({level, category, quizName, userId})
-        .then(
-            quiz.postQuestions(inputField)
+        if (level, category, quizName, userId) {
+            quiz.postQuiz({level, category, quizName, userId})
             .then(
-                window.location.href = "http://www.localhost:3000/"
+                quiz.postQuestions(inputField)
+                .then(
+                    window.location.href = "http://www.localhost:3000/"
+                )
             )
-        )
-        // add Axios calls
-        console.log("Input Field", inputField);
-        console.log("Difficulty " + level);
-        console.log("QuizName: " + quizName);
-        console.log("Category: " + category);
+        } else {
+            toast("All fields must be filled out properly to submit a quiz");
+        }
+
     }
 
     const handleAddFields = () => {
@@ -79,6 +80,7 @@ function BuildQuiz() {
 
     return (
         <Container>
+            <ToastContainer/>
             <form sx = {{ m:1 }} onSubmit = {handleSubmit}>
                 <h1>Quiz Info</h1>
                     <Box sx={{ minWidth: 120 }}>
@@ -107,8 +109,7 @@ function BuildQuiz() {
                                     <MenuItem value={"hard"}>Hard</MenuItem>
                                     </Select>
                                 </FormControl> 
-                            </Box>
-                            <Box>
+                            
                             <FormControl fullWidth> 
                                 <InputLabel id="category">Category</InputLabel>
                                     <Select
@@ -116,6 +117,7 @@ function BuildQuiz() {
                                     labelId = "category"
                                     name = "category"
                                     value = {category}
+                                    label = "Category"
                                     onChange={event => handleCategoryChange(event)}
                                     >
                                     <MenuItem value= 'Sports'>

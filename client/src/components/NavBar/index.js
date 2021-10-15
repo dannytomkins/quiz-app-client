@@ -66,43 +66,9 @@ function NavBar() {
                 onClick = {() => deleteAll()}
                 >
                 </Tab>}
-
-
             </Tabs>
         </Box>
-
         </div>);
-
-
-              {/* {Cookies.get("id") &&<NavLink 
-              to = "/search"
-              className = "nav-link"
-              >
-                Search
-              </NavLink>} */}
-              
-              {/* <NavLink 
-              to = "/profile"
-              className = "nav-link"
-              >
-                Profile
-              </NavLink> */}
-
-
-              {/* <NavLink 
-              to = "/leaderboard"
-              className = "nav-link"
-              >
-                Leaderboard
-              </NavLink> */}
-              
-            //   {!Cookies.get("id") && <NavLink 
-            //   to = "/Login"
-            //   className = "nav-link"
-            //   >
-            //     Login
-            //   </NavLink>}
-
 }
   
 export default NavBar;
