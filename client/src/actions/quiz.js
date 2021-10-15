@@ -17,6 +17,10 @@ export default {
     }
 }
 
+export const getAllQuizzes = () => {
+    return axios.get(host + "/quiz");
+}
+
 export const getQuizById = (quizId) => {
     return axios.get(host + "/quiz/" + quizId);
 }
