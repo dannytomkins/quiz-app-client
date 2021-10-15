@@ -1,23 +1,23 @@
 /* the functional important stuff */
 .container {
     display:table;
-    width: 100
+  }
+  .gallerycard0 {
+    display:table-row-group;  
   }
   .gallerycard1 {
-    display:table-footer-group;  
+    display:table-footer-group;
   }
   .gallerycard2 {
-    display:table-row-group;
+    display:table-header-group;
   }
   .gallerycard3 {
-    display:table-header-group;
-    font-size: "16";
-    width : "80%";
-    text-align: 'center';
+    display:table-footer-group;
   }
   .gallerycard4 {
     display:table-header-group;
-    font-size: "16";
-    width : "80%";
-    text-align: 'center';
   }
+  .gallerycard5 {
+    display:table-row-group;
+  }
+

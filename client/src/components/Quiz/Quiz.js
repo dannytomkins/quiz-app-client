@@ -139,9 +139,11 @@ const Quiz = () => {
 				"score" : score + 1
 			})
         }
+
+		console.log(randomNum);
     };
 
-	const randomNum = Math.floor(Math.random() * (5 + 1))
+	const randomNum = Math.floor(Math.random() * (3 + 1))
 
     return (
 		<div>
@@ -174,13 +176,15 @@ const Quiz = () => {
 					<CardContent>	
 						<Button className = {`gallerycard${randomNum}`} variant = "underline"  sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('correctAnswer')}>
 							<Typography variant = "h6">
-								{quiz.question[currentQuestion].correctAnswer}
+								{quiz.question[currentQuestion].wrongAnswerTwo}
 							</Typography>
 						</Button>
 					</CardContent>
 				</Card>
 				
-				<Card  className = {`gallerycard${randomNum + 1}`}>
+				<Card  
+				className = {`gallerycard${randomNum + 1}`}
+				>
 					<CardContent>
 						<Button variant = "underline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
 							<Typography variant = "h6">	
@@ -190,17 +194,21 @@ const Quiz = () => {
 					</CardContent>
 				</Card>
 				
-				<Card  className = {`gallerycard${randomNum + 2}`}>
+				<Card  
+				className = {`gallerycard${randomNum + 2}`}
+				>
 					<CardContent>
 						<Button variant = "underline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
 							<Typography variant = "h6">
-								{quiz.question[currentQuestion].wrongAnswerTwo}
+								{quiz.question[currentQuestion].correctAnswer}
 							</Typography>	
 						</Button>
 					</CardContent>
 				</Card>
 				
-				<Card className = {`gallerycard${randomNum + 3}`}>
+				<Card 
+				className = {`gallerycard${randomNum + 3}`}
+				>
 					<CardContent>
 						<Button variant = "" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
 							<Typography variant = "h6">
