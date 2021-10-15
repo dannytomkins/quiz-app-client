@@ -18,7 +18,11 @@ function NavBar() {
     return (
         <div>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs>
+            <Tabs
+                variant = "scrollable"
+                scrollButtons
+                allowScrollButtonsMobile    
+            >
                 <Tab
                     label = "Quiz App"
                     component = {Link}
