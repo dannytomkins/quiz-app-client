@@ -8,6 +8,9 @@ const host = "http://localhost:2121";
 
 
     export const getScoresByUserId = (id) => {
-        return axios.get(host + "/score/" + id);
+        return axios.get(host + "/score/user/" + id);
     }
 
+    export const getAllScores = () => {
+        return axios.get(host + "/score");
+    }

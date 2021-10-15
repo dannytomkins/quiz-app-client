@@ -5,6 +5,8 @@ import ProfileBanner from "../../components/Profile/ProfileBanner";
 import QuizFeed from "../../components/Feed/QuizFeed";
 import Cookies from "js-cookie"
 import QuizScores from "../../components/Profile/QuizScores";
+import { getQuizzesByUserId } from "../../actions/quiz";
+import QuizzesByUser from "../../components/Profile/QuizzesByUser";
 
 class ProfilePage extends Component {
 
@@ -28,12 +30,30 @@ class ProfilePage extends Component {
     //         .catch(err => console.log(err))
     // }
 
+
+    state = {savedQuizzes: []};
+
+    componentDidMount() {
+        const userId = Cookies.get('id')
+
+        getQuizzesByUserId(userId)
+        .then(res => {
+            if (res.data.data === "error") {
+                throw new Error(res.data.data);
+            }
+            this.setState({ savedQuizzes: res.data.reverse()});
+            console.log(this.state.savedQuizzes.reverse());
+        })
+        .catch(err => console.log(err));
+    }
+
 render() {
         return (
             <div>
                 <ProfileBanner />
                 {/* <Feed visits = {this.state.savedVisits}/> */}
                 <QuizScores />
+                <QuizzesByUser quizzes = {this.state.savedQuizzes} />
             </div>
         )
     }
