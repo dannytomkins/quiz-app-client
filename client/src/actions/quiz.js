@@ -20,3 +20,7 @@ export default {
 export const getQuizById = (quizId) => {
     return axios.get(host + "/quiz/" + quizId);
 }
+
+export const getQuizzesByUserId = (id) => {
+    return axios.get(host + "/quiz/user/" + id);
+}

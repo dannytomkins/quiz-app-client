@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 import { getScoresByUserId } from '../../actions/score';
+import { getAllScores } from '../../actions/score';
+import { getQuizById } from '../../actions/quiz';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,19 +12,36 @@ import Typography from '@mui/material/Typography';
 const QuizScores = () => {
   const id = Cookies.get('id');
 
-  // const [score, setScore] = useState([])
+  const [score, setScore] = useState([])
+  const [quiz, setQuiz] = useState([])
+
 
   // useEffect(() => {
   //   getScoresByUserId(id).then(score => {setScore(score.data)});
   // }, []);
 
-  const score = [
-    { quizId: 1, scorePercent: 100 },
-    { quizId: 33, scorePercent: 80 },
-    { quizId: 90, scorePercent: 40 },
-  ];
+  useEffect(() => {
+    getAllScores()
+    .then(score => {setScore(score.data)})
+    .then(score.forEach(score => {
+      getQuizById(score.quizId)
+      .then(quiz => {setQuiz(quiz.data)})
+    }));
+    console.log("quiz: ", quiz);
 
-  console.log(score);
+  }, []);
+
+  
+
+  // const score = [
+  //   { quizId: 1, scorePercent: 100 },
+  //   { quizId: 33, scorePercent: 80 },
+  //   { quizId: 90, scorePercent: 40 },
+  // ];
+
+  console.log("score: ", score);
+  console.log("quiz: ", quiz);
+
 
   return (
     <div>
@@ -37,7 +56,7 @@ const QuizScores = () => {
                 {score.quizId}
               </Typography>
               <Typography variant='h3'>
-                {score.scorePercent}
+                {score.score}
                 {'%'}
               </Typography>
             </CardContent>
