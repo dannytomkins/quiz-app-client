@@ -174,7 +174,7 @@ const Quiz = () => {
 				<Table  className = "container">
 				<Card>
 					<CardContent>	
-						<Button className = {`gallerycard${randomNum}`} variant = "underline"  sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('correctAnswer')}>
+						<Button className = {`gallerycard${randomNum}`} variant = "underline"  sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
 							<Typography variant = "h6">
 								{quiz.question[currentQuestion].wrongAnswerTwo}
 							</Typography>
@@ -198,7 +198,7 @@ const Quiz = () => {
 				className = {`gallerycard${randomNum + 2}`}
 				>
 					<CardContent>
-						<Button variant = "underline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('incorrectAnswer')}>
+						<Button variant = "underline" sx = {{ fontSize: 16, width : "80%"}} color = "text.secondary" onClick = {() => handleAnswerOptionClick('correctAnswer')}>
 							<Typography variant = "h6">
 								{quiz.question[currentQuestion].correctAnswer}
 							</Typography>	

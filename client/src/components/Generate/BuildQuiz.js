@@ -162,6 +162,7 @@ function BuildQuiz() {
                         value={inputField.wrongAnswerOne}
                         onChange={event => handleChangeInput(index, event)}
                         />
+                        
 
                         <TextField 
                         sx = {{mb: 1, width: '100%'}}

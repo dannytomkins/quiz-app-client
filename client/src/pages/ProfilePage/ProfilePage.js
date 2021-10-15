@@ -51,7 +51,6 @@ render() {
         return (
             <div>
                 <ProfileBanner />
-                {/* <Feed visits = {this.state.savedVisits}/> */}
                 <QuizScores />
                 <QuizzesByUser quizzes = {this.state.savedQuizzes} />
             </div>
