@@ -9,8 +9,8 @@ import user from "../../actions/user";
 
 const Login = () => {
 
-    const notify = () => toast.error("This username / password is not registered with the database, please try again.");
-
+    const notify = () => console.log("Hello");
+ 
     // create state with default values
     const [formData, setFormData] = useState({
         username: '',

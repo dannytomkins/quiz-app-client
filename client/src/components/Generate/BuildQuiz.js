@@ -15,8 +15,6 @@ import quiz from "../../actions/quiz";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from 'react-toastify';
 
-
-
 function BuildQuiz() {
 
     const [inputField, setInputField] = useState([
